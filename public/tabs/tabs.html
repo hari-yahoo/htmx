@@ -1,59 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTMX Tabs Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
     <script src="https://unpkg.com/htmx.org@1.5.0"></script>
-    <style>
-        .tabs {
-            display: flex;
-            margin-bottom: 1rem;
-        }
-        .tab {
-            padding: 1rem;
-            cursor: pointer;
-            background-color: #f1f1f1;
-            border: 1px solid #ddd;
-        }
-        .tab:not(:last-child) {
-            border-right: none;
-        }
-        .tab.active {
-            background-color: #ddd;
-        }
-        .tab-content {
-            padding: 1rem;
-            border: 1px solid #ddd;
-            background-color: #fff;
-        }
-    </style>
+
 </head>
+
 <body>
+    <main class="container">
+        <nav>
+            <ul>
+                <li hx-get="/section1" hx-trigger="click" hx-target="#tab-content" hx-swap="innerHTML">One</li>
+                <li hx-get="/section2" hx-trigger="click" hx-target="#tab-content" hx-swap="innerHTML">Two</li>
+                <li hx-get="/section3" hx-trigger="click" hx-target="#tab-content" hx-swap="innerHTML">Three</li>
+            </ul>
+        </nav>
 
-<div class="tabs">
-    <div class="tab" hx-get="/section1" hx-trigger="click" hx-target="#tab-content" hx-swap="innerHTML">Tab 1</div>
-    <div class="tab" hx-get="/section2" hx-trigger="click" hx-target="#tab-content" hx-swap="innerHTML">Tab 2</div>
-    <div class="tab" hx-get="/section3" hx-trigger="click" hx-target="#tab-content" hx-swap="innerHTML">Tab 3</div>
-</div>
-
-<div id="tab-content" class="tab-content">
-    <!-- Initial content or loading message -->
-    <p>Please select a tab to load content.</p>
-</div>
-
-<script>
-    document.addEventListener('htmx:beforeRequest', function(event) {
-        let tabs = document.querySelectorAll('.tab');
-        tabs.forEach(tab => tab.classList.remove('active'));
-    });
-
-    document.addEventListener('htmx:afterRequest', function(event) {
-        if (event.detail.elt.classList.contains('tab')) {
-            event.detail.elt.classList.add('active');
-        }
-    });
-</script>
+        <div id="tab-content" class="tab-content">
+            <!-- Initial content or loading message -->
+            <p>Please select a tab to load content.</p>
+        </div>
+    </main>
 
 </body>
+
 </html>
