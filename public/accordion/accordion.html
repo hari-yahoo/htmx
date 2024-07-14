@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <script src="https://unpkg.com/htmx.org@1.5.0"></script>
+
+</head>
+
+<body>
+    <main class="container">
+        <details>
+            <summary hx-get="/section1" hx-trigger="click" hx-target="#content1">Accordion 1</summary>
+            <p id="content1"></p>
+        </details>
+        <hr />
+        <details>
+            <summary hx-get="/section2" hx-trigger="click" hx-target="#content2">Accordion 1</summary>
+            <p id="content2"></p>
+        </details>
+
+
+    </main>
+
+</body>
+
+</html>
