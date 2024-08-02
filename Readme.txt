@@ -1,4 +1,7 @@
 Experiments with HTMX
+java -jar ./schemaspy.jar -vizjs -t pgsql11 -dp ./postgre-jdbc.jar -db dvdrental -host localhost -port 5432 -s public -u postgres -p admin -o output
+https://github.com/schemaspy/schemaspy
+
 import psycopg2
 import csv
 import json
